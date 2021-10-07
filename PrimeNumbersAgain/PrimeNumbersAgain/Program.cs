@@ -25,7 +25,22 @@ namespace PrimeNumbersAgain
 
         static int FindNthPrime(int n)
         {
-            return 0;
+            bool[] numbers = new bool[n];
+
+            for (int i = 2; i <= Math.Sqrt(n); i++)
+            {
+                if (numbers[i])
+                {
+                    for (int j = ; j <= n; j++)
+                    {
+                        numbers[j] = false; 
+                    }
+                }
+
+                return numbers[i]; 
+            }
+
+            
         }
 
         static int GetNumber()
