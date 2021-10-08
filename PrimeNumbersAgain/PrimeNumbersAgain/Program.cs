@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace PrimeNumbersAgain
 {
@@ -25,22 +27,22 @@ namespace PrimeNumbersAgain
 
         static int FindNthPrime(int n)
         {
-            bool[] numbers = new bool[n];
+            List<bool> numbers = Enumerable.Repeat(true, n).ToList();
 
-            for (int i = 2; i <= Math.Sqrt(n); i++)
+            for (int i = 2; i <= n; i++)
             {
                 if (numbers[i])
                 {
-                    for (int j = ; j <= n; j++)
+                    for (int j = i*2; j <= n; j+= i)
                     {
                         numbers[j] = false; 
                     }
                 }
-
-                return numbers[i]; 
+                
             }
 
-            
+            return 0;
+
         }
 
         static int GetNumber()
