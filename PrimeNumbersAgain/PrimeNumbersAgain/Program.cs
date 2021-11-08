@@ -27,21 +27,21 @@ namespace PrimeNumbersAgain
 
         static int FindNthPrime(int n)
         {
-            List<bool> numbers = Enumerable.Repeat(true, n).ToList();
-
-            for (int i = 2; i <= n; i++)
-            {
-                if (numbers[i])
+             bool[] is_prime = new bool[max + 1];
+                for (int i = 2; i <= max; i++) is_prime[i] = true;
+            
+                // Cross out multiples.
+                for (int i = 2; i <= max; i++)
                 {
-                    for (int j = i*2; j <= n; j+= i)
+                    // See if i is prime.
+                    if (is_prime[i])
                     {
-                        numbers[j] = false; 
+                        // Knock out multiples of i.
+                        for (int j = i * 2; j <= max; j += i)
+                            is_prime[j] = false;
                     }
                 }
-                
-            }
-
-            return 0;
+                return is_prime;
 
         }
 
